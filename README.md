@@ -1,4 +1,3 @@
-Banking AI Dashboard: Professional README
 This repository contains the frontend for a modern, AI-integrated banking application. The system provides real-time transaction analysis using an ATM-inspired interface, bridging the gap between raw financial data and actionable user insights.
 
 Project Overview
@@ -16,7 +15,8 @@ Regex-Based Token Parsing: Implemented a robust client-side parser to handle non
 Tech Stack
 React (Vite): Frontend framework for high-performance UI rendering.
 
-Spring Boot: Java backend serving as the orchestration layer for database retrieval and OpenAI integration.
+Spring Boot: Java backend serving as the orchestration layer for database retrieval and OpenAI integration: https://github.com/engralikhodor/gdc-bank
+
 
 SSE (Server-Sent Events): Protocol used for unidirectional real-time data streaming.
 
@@ -30,7 +30,7 @@ Run the development server:
 
 Bash
 npm run dev
-Environment Configuration: Ensure the backend is running on http://localhost:8080 to allow the frontend to communicate with the AI endpoints.
+Environment Configuration: Ensure the backend is running to allow the frontend to communicate with the AI endpoints.
 
 Future Enhancements
 Markdown Support: Integrating a parser to render AI summaries with bold headers and bullet points for better readability.
