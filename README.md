@@ -22,11 +22,6 @@ SSE (Server-Sent Events): Protocol used for unidirectional real-time data stream
 
 CSS3: Custom styles for the specialized ATM-glass effect and responsive layout.
 
-Setup and Installation
-Clone the repository:
-
-Bash
-git clone https://github.com/your-username/banking-ai-frontend.git
 Install dependencies:
 
 Bash
