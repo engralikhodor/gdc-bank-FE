@@ -1,0 +1,991 @@
+/* ATM Container & Overall Layout */
+.atm-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #e8ecf1 0%, #d4dce6 100%);
+  font-family: 'Roboto', sans-serif;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Main ATM Machine */
+.atm-machine {
+  width: 100%;
+  max-width: 420px;
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+  border: 10px solid #1a3a52;
+  border-radius: 24px;
+  box-shadow: 
+    0 30px 80px rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    0 0 0 1px rgba(26, 58, 82, 0.1);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  animation: atmBootup 0.8s ease-out;
+}
+
+@keyframes atmBootup {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Bank Branding Header */
+.atm-header {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-bottom: 12px;
+}
+
+.bank-branding {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.bank-name {
+  font-size: 1.4em;
+  font-weight: 700;
+  color: #1a3a52;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.bank-divider {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #1e90ff, transparent);
+  margin: 0;
+}
+
+.account-info-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  padding: 12px;
+  background: rgba(30, 144, 255, 0.04);
+  border-radius: 8px;
+  border: 1px solid rgba(30, 144, 255, 0.1);
+}
+
+.account-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.account-detail .label {
+  font-size: 0.65em;
+  font-weight: 600;
+  color: #7a8a99;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+.account-detail .value {
+  font-size: 0.9em;
+  font-weight: 600;
+  color: #1a3a52;
+  letter-spacing: 1px;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* ATM Screen */
+.atm-screen {
+  background: linear-gradient(180deg, #f0f4f9 0%, #e8ecf1 100%);
+  border: 3px solid #1e90ff;
+  border-radius: 10px;
+  padding: 18px;
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 
+    inset 0 0 20px rgba(30, 144, 255, 0.08),
+    0 0 15px rgba(30, 144, 255, 0.1);
+}
+
+.screen-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 12px;
+}
+
+.screen-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10px;
+}
+
+.screen-title {
+  font-size: 0.75em;
+  font-weight: 700;
+  color: #1a3a52;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}
+
+.screen-time {
+  font-size: 0.75em;
+  font-weight: 600;
+  color: #1e90ff;
+  font-family: 'Roboto', sans-serif;
+  letter-spacing: 0.5px;
+}
+
+.screen-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #1e90ff, transparent);
+}
+
+.screen-display {
+  flex: 1;
+  overflow-y: auto;
+  color: #1a3a52;
+  font-size: 0.88em;
+  line-height: 1.7;
+  word-wrap: break-word;
+  padding: 14px;
+  min-height: 240px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  text-align: left;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 6px;
+  border: 1px solid rgba(30, 144, 255, 0.1);
+}
+
+.analysis-text {
+  animation: screenGlow 0.5s ease-out;
+  font-weight: 500;
+}
+
+@keyframes screenGlow {
+  from {
+    opacity: 0;
+    text-shadow: 0 0 10px rgba(30, 144, 255, 0.1);
+  }
+  to {
+    opacity: 1;
+    text-shadow: none;
+  }
+}
+
+.placeholder-text {
+  opacity: 0.6;
+  font-size: 0.88em;
+  font-weight: 500;
+  color: #7a8a99;
+}
+
+.screen-footer {
+  border-top: 1px solid rgba(30, 144, 255, 0.2);
+  padding-top: 8px;
+  font-size: 0.7em;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 20px;
+}
+
+.loading-indicator {
+  animation: pulse 1.2s infinite;
+  font-weight: 700;
+  color: #1e90ff;
+  letter-spacing: 1px;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* ATM Keypad/Buttons */
+.atm-keypad {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.atm-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: linear-gradient(135deg, #1e90ff 0%, #1873d4 100%);
+  border: none;
+  border-radius: 12px;
+  color: #ffffff;
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.9em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  gap: 5px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 
+    0 4px 15px rgba(30, 144, 255, 0.25),
+    0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.atm-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.15);
+  transition: left 0.3s ease;
+}
+
+.atm-button:hover:not(:disabled) {
+  background: linear-gradient(135deg, #2296f3 0%, #1873d4 100%);
+  transform: translateY(-3px);
+  box-shadow: 
+    0 6px 20px rgba(30, 144, 255, 0.35),
+    0 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+.atm-button:hover:not(:disabled)::before {
+  left: 100%;
+}
+
+.atm-button:active:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 
+    0 3px 12px rgba(30, 144, 255, 0.25),
+    0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.atm-button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  background: linear-gradient(135deg, #90a4ae 0%, #78909c 100%);
+  box-shadow: none;
+}
+
+.analyze-btn {
+  grid-column: 1 / 2;
+}
+
+.clear-btn {
+  grid-column: 2 / 3;
+}
+
+.button-label {
+  font-size: 0.95em;
+  letter-spacing: 1px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.button-sublabel {
+  font-size: 0.68em;
+  opacity: 0.85;
+  letter-spacing: 0.3px;
+  font-weight: 500;
+}
+
+/* ATM Footer */
+.atm-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 14px;
+  border-top: 2px solid rgba(30, 144, 255, 0.15);
+}
+
+.speaker {
+  width: 44px;
+  height: 14px;
+  background: linear-gradient(180deg, #c0c7ce 0%, #a8adb5 100%);
+  border-radius: 7px;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.speaker::before,
+.speaker::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 3px;
+  background: #7a8a99;
+  border-radius: 50%;
+}
+
+.speaker::before {
+  left: 10px;
+}
+
+.speaker::after {
+  right: 10px;
+}
+
+.status-indicators {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.72em;
+  color: #1a3a52;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  font-weight: 600;
+}
+
+.indicator {
+  width: 10px;
+  height: 10px;
+  background: #ecf0f1;
+  border-radius: 50%;
+  border: 1.5px solid #1e90ff;
+  transition: all 0.3s ease;
+}
+
+.indicator.active {
+  background: #1e90ff;
+  box-shadow: 0 0 8px rgba(30, 144, 255, 0.6);
+  animation: blink 1.2s infinite;
+}
+
+@keyframes blink {
+  0%, 49% {
+    opacity: 1;
+  }
+  50%, 100% {
+    opacity: 0.4;
+  }
+}
+
+.status-text {
+  opacity: 0.8;
+}
+
+/* Scrollbar Styling */
+.screen-display::-webkit-scrollbar {
+  width: 6px;
+}
+
+.screen-display::-webkit-scrollbar-track {
+  background: rgba(30, 144, 255, 0.08);
+  border-radius: 3px;
+}
+
+.screen-display::-webkit-scrollbar-thumb {
+  background: rgba(30, 144, 255, 0.25);
+  border-radius: 3px;
+}
+
+.screen-display::-webkit-scrollbar-thumb:hover {
+  background: rgba(30, 144, 255, 0.4);
+}
+
+/* Responsive Design */
+
+/* Tablets (768px and below) */
+@media (max-width: 768px) {
+  .atm-machine {
+    max-width: 380px;
+    padding: 24px;
+    gap: 22px;
+  }
+
+  .bank-name {
+    font-size: 1.2em;
+  }
+
+  .atm-screen {
+    min-height: 280px;
+    padding: 14px;
+  }
+
+  .screen-display {
+    font-size: 0.84em;
+    min-height: 200px;
+    padding: 12px;
+  }
+
+  .atm-button {
+    padding: 16px;
+    font-size: 0.85em;
+  }
+}
+
+/* Small Phones (480px and below) */
+@media (max-width: 480px) {
+  .atm-container {
+    padding: 10px;
+  }
+
+  .atm-machine {
+    max-width: 100%;
+    padding: 18px;
+    gap: 18px;
+    border-width: 8px;
+    border-radius: 18px;
+  }
+
+  .bank-name {
+    font-size: 1.1em;
+    letter-spacing: 1.5px;
+  }
+
+  .account-info-header {
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .account-detail .label {
+    font-size: 0.6em;
+  }
+
+  .account-detail .value {
+    font-size: 0.85em;
+  }
+
+  .atm-screen {
+    min-height: 260px;
+    padding: 12px;
+    border-width: 2px;
+  }
+
+  .screen-header {
+    padding-bottom: 8px;
+  }
+
+  .screen-title {
+    font-size: 0.7em;
+  }
+
+  .screen-display {
+    font-size: 0.8em;
+    min-height: 180px;
+    padding: 10px;
+  }
+
+  .atm-keypad {
+    gap: 12px;
+    margin-bottom: 5px;
+  }
+
+  .atm-button {
+    padding: 14px;
+    font-size: 0.8em;
+    border-radius: 10px;
+    gap: 3px;
+  }
+
+  .button-label {
+    font-size: 0.9em;
+  }
+
+  .button-sublabel {
+    font-size: 0.62em;
+  }
+
+  .atm-footer {
+    padding-top: 10px;
+    gap: 10px;
+  }
+
+  .speaker {
+    width: 40px;
+    height: 12px;
+  }
+
+  .status-indicators {
+    font-size: 0.68em;
+    gap: 6px;
+  }
+
+  .indicator {
+    width: 8px;
+    height: 8px;
+  }
+}
+
+/* Extra Small Phones (320px and below) */
+@media (max-width: 320px) {
+  .atm-machine {
+    padding: 14px;
+    gap: 14px;
+  }
+
+  .bank-name {
+    font-size: 1em;
+    letter-spacing: 1px;
+  }
+
+  .account-info-header {
+    gap: 8px;
+    padding: 8px;
+  }
+
+  .atm-screen {
+    min-height: 240px;
+    padding: 10px;
+  }
+
+  .screen-display {
+    font-size: 0.76em;
+    min-height: 160px;
+  }
+
+  .atm-button {
+    padding: 12px;
+    font-size: 0.75em;
+  }
+}
+
+/* Reset default styles */
+#root {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100%;
+}
+
+/* ATM Screen */
+.atm-screen {
+  background: linear-gradient(180deg, #f0f4f8 0%, #e8ecf1 100%);
+  border: 3px solid #1e90ff;
+  border-radius: 8px;
+  padding: 15px;
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 
+    inset 0 0 20px rgba(30, 144, 255, 0.05),
+    0 0 15px rgba(30, 144, 255, 0.15);
+}
+
+.screen-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 8px;
+}
+
+.screen-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.7em;
+  color: #1e90ff;
+  opacity: 0.8;
+  border-bottom: 1px solid rgba(30, 144, 255, 0.2);
+  padding-bottom: 8px;
+  letter-spacing: 1px;
+}
+
+.screen-status {
+  font-weight: bold;
+}
+
+.screen-display {
+  flex: 1;
+  overflow-y: auto;
+  color: #2c3e50;
+  font-size: 0.85em;
+  line-height: 1.6;
+  word-wrap: break-word;
+  padding: 10px 5px;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.analysis-text {
+  text-align: left;
+  animation: screenGlow 0.5s ease-out;
+}
+
+@keyframes screenGlow {
+  from {
+    opacity: 0;
+    text-shadow: 0 0 10px rgba(30, 144, 255, 0.1);
+  }
+  to {
+    opacity: 1;
+    text-shadow: 0 0 5px rgba(30, 144, 255, 0.05);
+  }
+}
+
+.placeholder-text {
+  opacity: 0.5;
+  font-size: 0.9em;
+}
+
+.screen-footer {
+  border-top: 1px solid rgba(30, 144, 255, 0.2);
+  padding-top: 8px;
+  font-size: 0.7em;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading-indicator {
+  animation: pulse 1s infinite;
+  font-weight: bold;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.5;
+    text-shadow: none;
+  }
+  50% {
+    opacity: 1;
+    text-shadow: 0 0 10px rgba(30, 144, 255, 0.3);
+  }
+}
+
+/* ATM Keypad/Buttons */
+.atm-keypad {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-bottom: 10px;
+}
+
+.atm-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  background: linear-gradient(145deg, #1e90ff, #1873d4);
+  border: 2px solid #0d47a1;
+  border-radius: 10px;
+  color: #ffffff;
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.9em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-shadow: 0 0 5px rgba(30, 144, 255, 0.3);
+  gap: 4px;
+  position: relative;
+  overflow: hidden;
+}
+
+.atm-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  transition: left 0.3s ease;
+}
+
+.atm-button:hover:not(:disabled)::before {
+  left: 100%;
+}
+
+.atm-button:hover:not(:disabled) {
+  background: linear-gradient(145deg, #2296f3, #1873d4);
+  box-shadow: 
+    0 0 15px rgba(30, 144, 255, 0.4),
+    inset 0 0 10px rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+.atm-button:active:not(:disabled) {
+  transform: translateY(0px);
+  box-shadow: 
+    0 0 10px rgba(30, 144, 255, 0.2),
+    inset 0 0 5px rgba(255, 255, 255, 0.1);
+}
+
+.atm-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  border-color: #90a4ae;
+  color: #90a4ae;
+  text-shadow: none;
+}
+
+.analyze-btn {
+  grid-column: 1 / 2;
+}
+
+.clear-btn {
+  grid-column: 2 / 3;
+}
+
+.button-label {
+  font-size: 0.95em;
+  letter-spacing: 1px;
+}
+
+.button-sublabel {
+  font-size: 0.65em;
+  opacity: 0.7;
+  letter-spacing: 0.5px;
+}
+
+/* ATM Footer */
+.atm-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 15px;
+  border-top: 1px solid rgba(0, 255, 136, 0.2);
+}
+
+.speaker {
+  width: 40px;
+  height: 12px;
+  background: radial-gradient(circle, #bdc3c7 0%, #95a5a6 100%);
+  border-radius: 6px;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.speaker::before,
+.speaker::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 4px;
+  background: #7f8c8d;
+  border-radius: 50%;
+}
+
+.speaker::before {
+  left: 8px;
+}
+
+.speaker::after {
+  right: 8px;
+}
+
+.status-indicators {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.75em;
+  color: #1e90ff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.indicator {
+  width: 10px;
+  height: 10px;
+  background: #ecf0f1;
+  border-radius: 50%;
+  border: 1px solid #1e90ff;
+  transition: all 0.3s ease;
+}
+
+.indicator.active {
+  background: #1e90ff;
+  box-shadow: 0 0 10px rgba(30, 144, 255, 0.6);
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 49% {
+    opacity: 1;
+  }
+  50%, 100% {
+    opacity: 0.3;
+  }
+}
+
+.status-text {
+  opacity: 0.8;
+}
+
+/* Scrollbar Styling */
+.screen-display::-webkit-scrollbar {
+  width: 6px;
+}
+
+.screen-display::-webkit-scrollbar-track {
+  background: rgba(30, 144, 255, 0.05);
+  border-radius: 3px;
+}
+
+.screen-display::-webkit-scrollbar-thumb {
+  background: rgba(30, 144, 255, 0.3);
+  border-radius: 3px;
+}
+
+.screen-display::-webkit-scrollbar-thumb:hover {
+  background: rgba(30, 144, 255, 0.5);
+}
+
+/* Responsive Design */
+
+/* Tablets (768px and below) */
+@media (max-width: 768px) {
+  .atm-machine {
+    max-width: 350px;
+    padding: 20px;
+    gap: 20px;
+  }
+
+  .atm-logo {
+    font-size: 2em;
+  }
+
+  .atm-title {
+    font-size: 1.1em;
+  }
+
+  .atm-screen {
+    min-height: 240px;
+  }
+
+  .screen-display {
+    font-size: 0.8em;
+    min-height: 180px;
+  }
+
+  .atm-button {
+    padding: 15px;
+    font-size: 0.85em;
+  }
+}
+
+/* Small Phones (480px and below) */
+@media (max-width: 480px) {
+  .atm-container {
+    padding: 10px;
+  }
+
+  .atm-machine {
+    max-width: 100%;
+    padding: 15px;
+    gap: 15px;
+    border-width: 6px;
+    border-radius: 15px;
+  }
+
+  .atm-logo {
+    font-size: 1.8em;
+  }
+
+  .atm-title {
+    font-size: 1em;
+  }
+
+  .atm-subtitle {
+    font-size: 0.7em;
+  }
+
+  .atm-screen {
+    min-height: 220px;
+    padding: 12px;
+    border-width: 2px;
+  }
+
+  .screen-header {
+    font-size: 0.65em;
+  }
+
+  .screen-display {
+    font-size: 0.75em;
+    min-height: 160px;
+    padding: 8px 3px;
+  }
+
+  .atm-keypad {
+    gap: 12px;
+    margin-bottom: 5px;
+  }
+
+  .atm-button {
+    padding: 12px;
+    font-size: 0.75em;
+    border-radius: 8px;
+    gap: 2px;
+  }
+
+  .button-label {
+    font-size: 0.9em;
+  }
+
+  .button-sublabel {
+    font-size: 0.6em;
+  }
+
+  .atm-footer {
+    padding-top: 10px;
+  }
+}
+
+/* Extra Small Phones (320px and below) */
+@media (max-width: 320px) {
+  .atm-machine {
+    padding: 12px;
+    gap: 12px;
+  }
+
+  .atm-logo {
+    font-size: 1.5em;
+  }
+
+  .atm-title {
+    font-size: 0.9em;
+    letter-spacing: 1px;
+  }
+
+  .atm-screen {
+    min-height: 200px;
+    padding: 10px;
+  }
+
+  .screen-display {
+    font-size: 0.7em;
+    min-height: 140px;
+  }
+
+  .atm-button {
+    padding: 10px;
+    font-size: 0.7em;
+  }
+}
+
+/* Reset default styles */
+#root {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100%;
+}
+
