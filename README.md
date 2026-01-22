@@ -1,73 +1,43 @@
-# React + TypeScript + Vite
+Banking AI Dashboard: Professional README
+This repository contains the frontend for a modern, AI-integrated banking application. The system provides real-time transaction analysis using an ATM-inspired interface, bridging the gap between raw financial data and actionable user insights.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Project Overview
+The core of this application is an AI-powered Transaction Advisor. It uses RAG (Retrieval-Augmented Generation) to securely fetch a user's transaction history from a Java/Spring Boot backend and process it through a Large Language Model. To ensure a low-latency experience, the insights are delivered via Server-Sent Events (SSE), providing a word-by-word streaming effect on the dashboard.
 
-Currently, two official plugins are available:
+Key Technical Features
+RAG Architecture: The frontend triggers a retrieval process where private banking data is injected into the AI context window, ensuring the advisor’s responses are grounded in factual financial history.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+SSE Streaming Implementation: Utilizes the Streams API to consume chunks from the backend in real-time. This eliminates the "waiting period" associated with standard REST calls, significantly improving the user experience.
 
-## React Compiler
+ATM Dashboard Interface: A professional, high-fidelity UI designed to mimic an ATM screen, featuring a live system clock, processing indicators, and a sanitized terminal for reading insights.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Regex-Based Token Parsing: Implemented a robust client-side parser to handle non-deterministic AI tokens, preserving character-level fidelity for currency, dates, and numerical summaries.
 
-## Expanding the ESLint configuration
+Tech Stack
+React (Vite): Frontend framework for high-performance UI rendering.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Spring Boot: Java backend serving as the orchestration layer for database retrieval and OpenAI integration.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+SSE (Server-Sent Events): Protocol used for unidirectional real-time data streaming.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+CSS3: Custom styles for the specialized ATM-glass effect and responsive layout.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Setup and Installation
+Clone the repository:
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Bash
+git clone https://github.com/your-username/banking-ai-frontend.git
+Install dependencies:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Bash
+npm install
+Run the development server:
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Bash
+npm run dev
+Environment Configuration: Ensure the backend is running on http://localhost:8080 to allow the frontend to communicate with the AI endpoints.
+
+Future Enhancements
+Markdown Support: Integrating a parser to render AI summaries with bold headers and bullet points for better readability.
+
+Source Citations: Mapping AI-generated values back to specific transaction IDs for increased transparency.
