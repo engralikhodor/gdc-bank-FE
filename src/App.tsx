@@ -69,10 +69,17 @@ function App() {
 
         setInsight((prev) => prev + cleanText);
       }
-    } catch (err) {
-      console.error(err);
+    } catch (err: unknown) {
+      console.error("Technical Error Details:", err);
 
-      setInsight("Error: " + err);
+      // Use Type Guarding to safely check if it's an Error object
+      const errorMessage = err instanceof Error ? err.message : String(err);
+
+      if (err instanceof TypeError || errorMessage.includes("fetch")) {
+        setInsight("SYSTEM NOTICE: Connection to the banking server was interrupted. Please check your network or try again later.");
+      } else {
+        setInsight("UNABLE TO PROCESS: An internal error occurred while generating insights.");
+      }
     } finally {
       setLoading(false);
     }

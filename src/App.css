@@ -11,6 +11,15 @@
   box-sizing: border-box;
 }
 
+.analysis-text:contains("SYSTEM NOTICE"),
+.analysis-text:contains("UNABLE TO PROCESS") {
+  color: #ff4d4d;
+  /* Banking Alert Red */
+  font-weight: bold;
+  border-left: 3px solid #ff4d4d;
+  padding-left: 10px;
+}
+
 /* Main ATM Machine */
 .atm-machine {
   width: 100%;
@@ -18,7 +27,7 @@
   background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
   border: 10px solid #1a3a52;
   border-radius: 24px;
-  box-shadow: 
+  box-shadow:
     0 30px 80px rgba(0, 0, 0, 0.25),
     inset 0 1px 0 rgba(255, 255, 255, 0.6),
     0 0 0 1px rgba(26, 58, 82, 0.1);
@@ -34,6 +43,7 @@
     opacity: 0;
     transform: scale(0.95) translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: scale(1) translateY(0);
@@ -110,7 +120,7 @@
   min-height: 320px;
   display: flex;
   flex-direction: column;
-  box-shadow: 
+  box-shadow:
     inset 0 0 20px rgba(30, 144, 255, 0.08),
     0 0 15px rgba(30, 144, 255, 0.1);
 }
@@ -178,6 +188,7 @@
     opacity: 0;
     text-shadow: 0 0 10px rgba(30, 144, 255, 0.1);
   }
+
   to {
     opacity: 1;
     text-shadow: none;
@@ -210,9 +221,12 @@
 }
 
 @keyframes pulse {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 0.6;
   }
+
   50% {
     opacity: 1;
   }
@@ -244,7 +258,7 @@
   gap: 5px;
   position: relative;
   overflow: hidden;
-  box-shadow: 
+  box-shadow:
     0 4px 15px rgba(30, 144, 255, 0.25),
     0 2px 5px rgba(0, 0, 0, 0.1);
 }
@@ -263,7 +277,7 @@
 .atm-button:hover:not(:disabled) {
   background: linear-gradient(135deg, #2296f3 0%, #1873d4 100%);
   transform: translateY(-3px);
-  box-shadow: 
+  box-shadow:
     0 6px 20px rgba(30, 144, 255, 0.35),
     0 3px 8px rgba(0, 0, 0, 0.15);
 }
@@ -274,7 +288,7 @@
 
 .atm-button:active:not(:disabled) {
   transform: translateY(-1px);
-  box-shadow: 
+  box-shadow:
     0 3px 12px rgba(30, 144, 255, 0.25),
     0 1px 3px rgba(0, 0, 0, 0.1);
 }
@@ -373,10 +387,14 @@
 }
 
 @keyframes blink {
-  0%, 49% {
+
+  0%,
+  49% {
     opacity: 1;
   }
-  50%, 100% {
+
+  50%,
+  100% {
     opacity: 0.4;
   }
 }
@@ -578,7 +596,7 @@
   min-height: 280px;
   display: flex;
   flex-direction: column;
-  box-shadow: 
+  box-shadow:
     inset 0 0 20px rgba(30, 144, 255, 0.05),
     0 0 15px rgba(30, 144, 255, 0.15);
 }
@@ -631,6 +649,7 @@
     opacity: 0;
     text-shadow: 0 0 10px rgba(30, 144, 255, 0.1);
   }
+
   to {
     opacity: 1;
     text-shadow: 0 0 5px rgba(30, 144, 255, 0.05);
@@ -658,10 +677,13 @@
 }
 
 @keyframes pulse {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 0.5;
     text-shadow: none;
   }
+
   50% {
     opacity: 1;
     text-shadow: 0 0 10px rgba(30, 144, 255, 0.3);
@@ -714,7 +736,7 @@
 
 .atm-button:hover:not(:disabled) {
   background: linear-gradient(145deg, #2296f3, #1873d4);
-  box-shadow: 
+  box-shadow:
     0 0 15px rgba(30, 144, 255, 0.4),
     inset 0 0 10px rgba(255, 255, 255, 0.15);
   transform: translateY(-2px);
@@ -722,7 +744,7 @@
 
 .atm-button:active:not(:disabled) {
   transform: translateY(0px);
-  box-shadow: 
+  box-shadow:
     0 0 10px rgba(30, 144, 255, 0.2),
     inset 0 0 5px rgba(255, 255, 255, 0.1);
 }
@@ -818,10 +840,14 @@
 }
 
 @keyframes blink {
-  0%, 49% {
+
+  0%,
+  49% {
     opacity: 1;
   }
-  50%, 100% {
+
+  50%,
+  100% {
     opacity: 0.3;
   }
 }
@@ -988,4 +1014,3 @@
   height: 100vh;
   width: 100%;
 }
-
